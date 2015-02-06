@@ -1,2 +1,1 @@
-#### 2015-02-06 11:58 test.
-test
+###### 2015-02-06 12h Logboek bachelorproef.
