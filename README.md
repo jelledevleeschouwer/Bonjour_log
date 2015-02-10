@@ -12,3 +12,9 @@ Tried the picoapp.elf program with some examples and figured out how it works.
 
 ##### 09 Feb '15 17h -  MDNS w/o picoapp.
 Working on a MDNS-app without the picoapp.elf wrapper. Got some problems figuring out the VDE Networking system.
+
+##### 10 Feb '15 12h -  MDNS-demo with VDE.
+Finally got VDE correctly setup and figured out. Working demo of MDNS, including multiple clients claiming the same name.
+
+##### 10 Feb '15 12h -  MDNS w/o picoapp - UPDATE.
+Not going continue to write the MDNS-app w/o the picoapp-wrapper despite the fact that I said that earlier. I now understand the wrapper and the MDNS-demo app so it would be a waste of time to write it again. Now I have a decent test-environment with VDE.
