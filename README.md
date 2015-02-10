@@ -18,3 +18,6 @@ Finally got VDE correctly setup and figured out. Working demo of MDNS, including
 
 ##### 10 Feb '15 12h -  MDNS w/o picoapp - UPDATE.
 Not going continue to write the MDNS-app w/o the picoapp-wrapper despite the fact that I said that earlier. I now understand the wrapper and the MDNS-demo app so it would be a waste of time to write it again. Now I have a decent test-environment with VDE.
+
+##### 10 Feb '15 17h -  Wrote Documentation.
+Wrote some documentation about running the picoTCP-demos, TUN/TAP-interfaces and VDE networking, etc. before I forget all these things I learned.
