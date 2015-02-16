@@ -32,3 +32,6 @@ I think I might have figured wout what the problem was with hosts not defending 
 
 ##### 13 Feb '15 17h -  Still reading.
 Still reading and documenting RFC6762 (Almost finished though). Probably start diving deeper into the code and compare with the RFC on Monday. Don't have the time to start with it this weekend.
+
+##### 16 Feb '15 17h -  Finished reading RFC6762.
+Will start examining the code tommorrow.
