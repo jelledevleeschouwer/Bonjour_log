@@ -35,3 +35,9 @@ Still reading and documenting RFC6762 (Almost finished though). Probably start d
 
 ##### 16 Feb '15 17h -  Finished reading RFC6762.
 Will start examining the code tommorrow.
+
+##### 17 Feb '15 11h -  Examining code.
+Started examining the code this morgning. Writing comments in the code with RFC rules and such.
+
+##### 17 Feb '15 11h -  Probing with QU-question.
+Did a Wireshark-log of the mDNS-app again, seems the Unicast Response bit of the probing queries isn't being set. !This results in the probing queries not being QU-questions which it SHOULD following the RFC. ![alt tag](https://raw.githubusercontent.com/jelledevleeschouwer/log/master/mdns_demo_2.png)
