@@ -41,3 +41,9 @@ Started examining the code this morning. Writing comments in the code with RFC r
 
 ##### 17 Feb '15 11h -  Probing with QU-question.
 Did a Wireshark-log of the mDNS-app again, seems the Unicast Response bit of the probing queries isn't being set. This results in the probing queries not being QU-questions which it SHOULD following the RFC. ![alt tag](https://raw.githubusercontent.com/jelledevleeschouwer/log/master/mdns_demo_2.png)
+
+##### 17 Feb '15 15h -  QU-questions - UPDATE.
+Made a first conceptual improvement to the mDNS modules, yay! :-) (*Just had a little urge to program while I was examining the code*) Probe queries are now being sent with the Unicast response bit set. Handling the probe queries correctly still needs to be implemented. But first, I am examining the code further. I am making a list of items that I think should be discussed. ![alt tag](https://raw.githubusercontent.com/jelledevleeschouwer/log/master/mdns_demo_3.png)
+
+##### 17 Feb '15 16h -  Simultaneous Probe Tiebreaking.
+Seems no proposed records are included in the Authority Section of a probing query. Hereby, Simultaneous Probe Tiebreaking is not possible.
