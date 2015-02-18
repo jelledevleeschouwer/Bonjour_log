@@ -47,3 +47,9 @@ Made a first conceptual improvement to the mDNS modules, yay! :-) (*Just had a l
 
 ##### 17 Feb '15 16h -  Simultaneous Probe Tiebreaking.
 Seems no proposed records are included in the Authority Section of a probing query. Hereby, Simultaneous Probe Tiebreaking is not possible.
+
+##### 18 Feb '15 17h -  Not responding to Probe Queries.
+Figured out why the hosts dont respond to probe queries. Seems while creating an answer, the code cant determine what the length should be of the rdata, according to qtype ANY. The problem lies within the mdns_get_len-function, it cant handle qtype ANY. If solved, the host still doesnt do anything with the defending reply though.
+
+##### 18 Feb '15 18h -  Examining the code - Continued.
+Continued examining the code today. Almost finished, still need to examing the cache functions, which won't take long I think.
