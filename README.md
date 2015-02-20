@@ -59,3 +59,9 @@ Name compression function only works if pointers to other label is not first lab
 
 ##### 19 Feb '15 14h -  Finished examining the code.
 Finished examining the code today. Since I have spare time until we'll be discussing my findings on RFC6762 and the code, I will conceptually start improving the functions that I think are very imortant. And then, when we are going to discuss my findings, we can already discuss what I changed and how I did it, and why I think it is important.
+
+##### 20 Feb '15 12h -  Multiple Questions - Answers.
+Currently working on a function to create a single question. I'm including the possibility to create a linked-list of multiple questions which you can pass to the 'create a query' function so multiple questions can be added in a single DNS packet. I am planning to this also for answer records, so it is possible to include multiple answers in either the Answer, Authority or Additional Section.
+
+##### 20 Feb '15 14h -  Single Question function and query filling.
+Function to create a single question 'standalone' finished. Function to fill the query with multiple questions in the Question Section, works too. Right now, only a question list is given to the fill-query function, but, when I have finished the function to create a single standalone resource record (answer), I will implement the functionallity to add muliple records in the Answer, Authority and/or Additional Sections.
