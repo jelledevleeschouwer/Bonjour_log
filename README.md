@@ -53,3 +53,9 @@ Figured out why the hosts dont respond to probe queries. Seems while creating an
 
 ##### 18 Feb '15 18h -  Examining the code - Continued.
 Continued examining the code today. Almost finished, still need to examing the cache functions, which won't take long I think.
+
+##### 19 Feb '15 12h -  Name decompression.
+Name compression function only works if pointers to other label is not first label in the name. If first label is a pointer, there is a chance that function will probably move out of the boundaries of buf.
+
+##### 19 Feb '15 14h -  Finished examining the code.
+Finished examining the code today. Since I have spare time until we'll be discussing my findings on RFC6762 and the code, I will conceptually start improving the functions that I think are very imortant. And then, when we are going to discuss my findings, we can already discuss what I changed and how I did it, and why I think it is important.
