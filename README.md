@@ -65,3 +65,6 @@ Currently working on a function to create a single question. I'm including the p
 
 ##### 20 Feb '15 14h -  Single Question function and query filling.
 Function to create a single question 'standalone' finished. Function to fill the query with multiple questions in the Question Section, works too. Right now, only a question list is given to the fill-query function, but, when I have finished the function to create a single standalone resource record (answer), I will implement the functionallity to add muliple records in the Answer, Authority and/or Additional Sections.
+
+##### 20 Feb '15 21h -  Single Resource Record function and Resource Record Sections filling.
+Finished function to create single Resource Record. Also finished function to fill the Resource Record Sections of a DNS packet with multiple resource records, including in the Authority Section and the Additional Section, which wasn't implemented before. Will test on Monday, looks good though, a lot cleaner now. Small issue, I've written these functions in the mDNS-module, but it makes a lot more sense if they would be included in the DNS-common module. Probably will change that next week, but I'll guess that's something we can discuss on Tuesday when we meet up.
