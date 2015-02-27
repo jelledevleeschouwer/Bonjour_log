@@ -77,3 +77,6 @@ Debugged the code written last week, and pushed the changes. Going to implement 
 
 ##### 27 Feb '15 12h -  Devon Branch.
 Did some examining in the Devon-branch. Seems this branch already includes a some of the generic functionalities I was planning on implementing myself in the DNS common code. Still no possibility of adding Authority or Additional records and inserting multiple resource records though.
+
+##### 27 Feb '15 18h -  Moving to DNS_common.
+Working on moving the generic DNS-functionalities in the mDNS module to the pico_dns_common module. Still working on it, need to still implement the answer and authority authority section filling in function pico_dns_query_create.
