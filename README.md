@@ -74,3 +74,6 @@ Seeing which functionalities can be implemented in de DNS-common code instead of
 
 ##### 27 Feb '15 11h -  Debugging.
 Debugged the code written last week, and pushed the changes. Going to implement the dns functions in the DNS module today.
+
+##### 27 Feb '15 12h -  Devon Branch.
+Did some examining in the Devon-branch. Seems this branch already includes a some of the generic functionalities I was planning on implementing myself in the DNS common code. Still no possibility of adding Authority or Additional records and inserting multiple resource records though.
