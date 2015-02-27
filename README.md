@@ -68,3 +68,9 @@ Function to create a single question 'standalone' finished. Function to fill the
 
 ##### 20 Feb '15 21h -  Single Resource Record function and Resource Record Sections filling.
 Finished function to create single Resource Record. Also finished function to fill the Resource Record Sections of a DNS packet with multiple resource records, including in the Authority Section and the Additional Section, which wasn't implemented before. Will test on Monday, looks good though, a lot cleaner now. Small issue, I've written these functions in the mDNS-module, but it makes a lot more sense if they would be included in the DNS-common module. Probably will change that next week, but I'll guess that's something we can discuss on Tuesday when we meet up.
+
+##### 26 Feb '15 14h -  pico_dns_common.
+Seeing which functionalities can be implemented in de DNS-common code instead of in the MDNS module itself.
+
+##### 27 Feb '15 11h -  Debugging.
+Debugged the code written last week, and pushed the changes. Going to implement the dns functions in the DNS module today.
