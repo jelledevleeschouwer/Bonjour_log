@@ -80,3 +80,6 @@ Did some examining in the Devon-branch. Seems this branch already includes a som
 
 ##### 27 Feb '15 18h -  Moving to DNS_common.
 Working on moving the generic DNS-functionalities in the mDNS module to the pico_dns_common module. Still working on it, need to still implement the answer and authority authority section filling in function pico_dns_query_create.
+
+##### 02 Mar '15 11h -  Moved all DNS functionalities to pico_dns_common.
+Today I'm going to begin writing the defending names part & maybe the Simultaneous Probe Tiebreaking part.
