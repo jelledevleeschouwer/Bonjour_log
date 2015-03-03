@@ -83,3 +83,12 @@ Working on moving the generic DNS-functionalities in the mDNS module to the pico
 
 ##### 02 Mar '15 11h -  Moved all DNS functionalities to pico_dns_common.
 Today I'm going to begin writing the defending names part & maybe the Simultaneous Probe Tiebreaking part.
+
+##### 03 Mar '15 10h -  Moved DNS name compression.
+Moved DNS name compression functionalities to de DNS common module. Now updating the Unit test for the mDNS module to work again and creating a Unit test for the common DNS module.
+
+##### 03 Mar '15 13h -  Written unit tests.
+Written several unit tests for the common DNS module and made the test for the mDNS module work again. Removed a couple of test conditions or commented them out because I still to need revise these functions in the code itself, so no point in testing them already.
+
+##### 03 Mar '15 14h -  Resource Record Sections in DNS Queries.
+Now Multiple resource records can be inserted in the Resource Record Sections of a DNS query. This allows Simultaneous Probe Tiebreaking and the ability to distinguish Probe Queries from normal mDNS queries.
