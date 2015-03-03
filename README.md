@@ -92,3 +92,6 @@ Written several unit tests for the common DNS module and made the test for the m
 
 ##### 03 Mar '15 14h -  Resource Record Sections in DNS Queries.
 Now Multiple resource records can be inserted in the Resource Record Sections of a DNS query. This allows Simultaneous Probe Tiebreaking and the ability to distinguish Probe Queries from normal mDNS queries.
+
+##### 03 Mar '15 17h -  IPv6 support and API update.
+Worked on IPv6 support of the mDNS module and changing the behaviour of mDNS initialise-function so it initialises both an IPv4 and an IPv6 socket to communicate with. Had a little trouble with understanding how the picoTCP stack works with Dual Stack sockets, (IPv4 and IPv6) if it needed 2 separate sockets to bind to or 1 single socket that supports both modes. I've also added a pico_mdns_claim()-function which makes it possible to claim multiple any resource record on the network, not only A, AAAA and PTR records, still need to implement it with the new initialise-function.
