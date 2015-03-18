@@ -110,3 +110,5 @@ Today I worked on the structures of the mDNS cookies. These cookies now support 
 
 ##### 11 Mar '15 12h -  API-functions - Cookies finished.
 Finally finished the Cookie structures and API-functions this morning. Multiple records with different flags can be claimed at once. That means; unique records together with shared records and multiple records with different types but with the same name. What I still need to do, is check if a record is requested to be claimed, but with the same rname/rtype/rclass than a record that is already in 'my records' and then don't add it too. Claimed Callback only gets called when all the to claim records passed the probe and/or announcement steps. Today I think I am going to finish the conflict resolution part and responding the queries-part.
+
+##### 18 Mar '15 10h -  Presentation Day.
