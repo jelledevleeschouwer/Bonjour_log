@@ -124,6 +124,12 @@ In the image below you can see the multicast packets send over the wire in wires
 ![alt tag](https://raw.githubusercontent.com/jelledevleeschouwer/log/master/mdns_demo_6.png)
 
 ##### 25 Mar '15 12h -  Third host doesn't seem to receive defenses - Debugging.
-When probe questions request for unicast responses and from the time that more than 2 hosts participate in the network, host 'n > 2' doesn't seem to receive unicast defenses anymore after they started the probing step the second time. Nevertheless, the hosts who are defending, receive the third hosts' probe queries and respond to them via unicast. But, the third host doesn't seem to receive them anymore. Really don't know what the problem is here. 
+When probe questions request for unicast responses and from the time that more than 2 hosts participate in the network, host 'n > 2' doesn't seem to receive unicast defenses anymore after they started the probing step the second time. Nevertheless, the hosts who are defending, receive the third hosts' probe queries and respond to them via unicast. But, the third host doesn't seem to receive them anymore. Really don't know what the problem is here.
 It has nothing to do with the conflict resolving because, if I let the hosts send probe queries that request for multicast responses, the defending names mechanism works correctly, as you can see in the image below.
 ![alt tag](https://raw.githubusercontent.com/jelledevleeschouwer/log/master/mdns_demo_7.png)
+
+##### 26 Mar '15 15h -  Found the problem 'n > 2'.
+Found the problem today behind hosts 'n > 2' not applying receiving defenses other than the first. The problem was localized in the ARP-module. Because more than two 2 hosts sended ARP-requests quickly after each other, the third host thought somebody was ARP flooding the network. Assuming this, the third host discarted the ARP requests and didn't reply to them. So the hosts that wanted to defend their names couldn't send their defense via unicast, so that was where the problem was. If I increased PICO_ARP_MAX_RATE, the conflict resolution worked perfectly with unicast probing.
+
+##### 26 Mar '15 15h -  Conflict resolution - Robustness.
+Tested the conflict resolution robustness with over 10 then different hosts. All did they detect and resolved conflicts perfectly. Even when suffixes changed at numbers to dozens (so from ' (9)' to ' (10)') and from dozens to hundreds (so from ' (99)' to ' (100)') and so on. Only when the suffix is ' (65535)', it is resolves to ' (0)'. But I think that is actually pretty robust, since you will never have more than 65535 devices trying to claim the same name. If you, however, do have that many devices on you local network, you might as well upgrade to some more advanced infrastructure ;-).
