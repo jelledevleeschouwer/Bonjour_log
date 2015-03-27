@@ -133,3 +133,12 @@ Found the problem today behind hosts 'n > 2' not receiving defenses other than t
 
 ##### 26 Mar '15 15h -  Conflict resolution - Robustness.
 Tested the conflict resolution robustness with over 10 different hosts. All did they detect and resolved conflicts perfectly. Even when suffixes changed at numbers to dozens (so from ' (9)' to ' (10)') and from dozens to hundreds (so from ' (99)' to ' (100)') and so on. Only when the suffix is ' (65535)', it is resolves to ' (0)'. But I think that is actually pretty robust, since you will never have more than 65535 devices trying to claim the same name. If you, however, do have that many devices on you local network, you might as well upgrade to some more advanced infrastructure ;-).
+
+##### 27 Mar '15 11h -  Questions for special record types.
+Hosts crash when query is received for record with rrtype other than ANY, A, AAAA or PTR. Debugging.
+
+##### 27 Mar '15 12h -  Known-Answer Suppression.
+Implemented Known-Answer Suppression (KAS). Records in the Answer section of queries are now removed from the list of answers the host is planning to send to the other host in response to the query.
+
+##### 27 Mar '15 15h -  Implemented Simultaneous Probe Tiebreaking.
+When 2 hosts happen to probe for records with the same name in the exactly the same period as another host, a race condition will occur. Neither of the hosts have claimed their records, so neither of them will defend their records. So both the hosts don't receive any defenses what results in both hosts claiming the same name. This is the reason why their proposed records need to be included in the authority section of their probe queries. When simultaneous probing occurs, the host with the lexicographically later record will win an the host with the lexicographically earlier data needs to postpone it's probing with 1 second. This is what I implemented today. When Simultaneous probing occurs, this will be detected and Simultaneous Probe Tiebreaking will be applied. This results in 1 host postponing his probing with 1 second, letting the other host finish it's probing step.
