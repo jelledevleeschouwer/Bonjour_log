@@ -142,3 +142,8 @@ Implemented Known-Answer Suppression (KAS). Records in the Answer section of que
 
 ##### 27 Mar '15 15h -  Implemented Simultaneous Probe Tiebreaking.
 When 2 hosts happen to probe for records with the same name in the exactly the same period as another host, a race condition will occur. Neither of the hosts have claimed their records, so neither of them will defend their records. So both the hosts don't receive any defenses what results in both hosts claiming the same name. This is the reason why their proposed records need to be included in the authority section of their probe queries. When simultaneous probing occurs, the host with the lexicographically later record will win an the host with the lexicographically earlier data needs to postpone it's probing with 1 second. This is what I implemented today. When Simultaneous probing occurs, this will be detected and Simultaneous Probe Tiebreaking will be applied. This results in 1 host postponing his probing with 1 second, letting the other host finish it's probing step.
+
+##### 30 Mar '15 15h -  implemented DNS name compression and decompression.
+Hosts now fully compress and decompress DNS packets following DNS Name Compression mechanism. DNS name compression was already implemented, but now, host do the name compression on their side as well when packets are sent on the wire.
+
+##### 30 Mar '15 15h -  Starting with caching of records.
