@@ -147,3 +147,12 @@ When 2 hosts happen to probe for records with the same name in the exactly the s
 Hosts now fully compress and decompress DNS packets following DNS Name Compression mechanism. DNS name compression was already implemented, but now, host do the name compression on their side as well when packets are sent on the wire.
 
 ##### 30 Mar '15 15h -  Starting with caching of records.
+
+##### 01 Apr '15 21h -  Implemented Caching.
+Today, finished caching of records and continuous updating of records. Answers received are now cached and reconfirmed at 80% of their TTL. If no response is received on the query the host is going to try to reconfirm again at 85%, 90% and finally 95%. If the record reaches 100% TTL, the record is flushed from the cache.
+
+##### 01 Apr '15 21h -  API-function getrecord.
+Now, there is only one API function to get records. If the record (or records) is (or are) found in the cache the callback is immediatelly called with the found record(s). If the record(s) is not found, the host is going to send a query on the wire.
+
+##### 01 Apr '15 21h -  Duplicate Question-Answer Suppression.
+I noticed that if a situation is simulated with multiple hosts, Duplicate Question & Answer Suppression is really recommended. Since those multiple hosts receive records of other hosts at mostly the same time, they are also going to try to reconfirm those records around the same time. If there is no Duplicate Questions & Answer Suppression, unnessecary questions and answers are sent right after each other, which really increases the unnessecary burden on the network. I am going to implement this functionality tommorrow.
