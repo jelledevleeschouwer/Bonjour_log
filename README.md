@@ -156,3 +156,6 @@ Now, there is only one API function to get records. If the record (or records) i
 
 ##### 01 Apr '15 21h -  Duplicate Question-Answer Suppression.
 I noticed that if a situation is simulated with multiple hosts, Duplicate Question & Answer Suppression is really recommended. Since those multiple hosts receive records of other hosts at mostly the same time, they are also going to try to reconfirm those records around the same time. If there is no Duplicate Questions & Answer Suppression, unnessecary questions and answers are sent right after each other, which really increases the unnessecary burden on the network. I am going to implement this functionality tommorrow.
+
+##### 01 Apr '15 22h -  Fixed Crashing hosts.
+Fixed the problem with hosts crashing when they received queries for which they don't have the authority to answer. When no records were found, the host dereferenced a NULL-pointer which is clearly not allowed. Fixed it.
