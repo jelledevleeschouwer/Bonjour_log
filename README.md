@@ -159,3 +159,9 @@ I noticed that if a situation is simulated with multiple hosts, Duplicate Questi
 
 ##### 01 Apr '15 22h -  Fixed Crashing hosts.
 Fixed the problem with hosts crashing when they received queries for which they don't have the authority to answer. When no records were found, the host dereferenced a NULL-pointer which is clearly not allowed. Fixed it.
+
+##### 02 Apr '15 09h -  Continuous Querying - Active interests.
+Maybe in the future the continuous querying possibility should only be applied to records for which the application sets an active interest on. The application could perhaps set an active interest on a certain type of records and the mDNS-module then applies Continuous updating only on those type of records. This reduces the amount of resources needed by the hosts.
+
+##### 02 Apr '15 10h -  Duplicate Query Suppression.
+Implemented duplicate query suppression, now. When a query is received, a corresponding query cookie is looked for. If there is one found, the status of the cookie is set to 'PICO_MDNS_COOKIE_CANCELLED' which doesn't let the host send the query again.
