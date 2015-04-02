@@ -165,3 +165,6 @@ Maybe in the future the continuous querying possibility should only be applied t
 
 ##### 02 Apr '15 10h -  Duplicate Query Suppression.
 Implemented duplicate query suppression, now. When a query is received, a corresponding query cookie is looked for. If there is one found, the status of the cookie is set to 'PICO_MDNS_COOKIE_CANCELLED' which doesn't let the host send the query again.
+
+##### 02 Apr '15 17h -  Discovered gdb!
+Really could use some backtrace information, so looked up a little information about command-line debugging. Well, this is a relief..
