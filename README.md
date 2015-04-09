@@ -181,3 +181,9 @@ Apparently the hosts are using a lot of timers at the moment. Don't know yet if 
 
 ##### 03 Apr '15 19h -  Duplicate Query Suppression with short TTL.
 When the TTL of records are pretty short, in the order of TTL < 60, Duplicate Query Suppression cannot be guaranteed. The chance of two hosts scheduling the sending of records on exactly the same moment gets a lot bigger, since the random variation gets a lot smaller. This isn't really a big of a deal, since, first of all, the TTL of records isn't most likely going to be in the order of TTL < 60. Secondly, Duplicate Query Suppression isn't more than a optimalisation to reduce the burden on the network.
+
+##### 04 Apr '15 11h -  Updating hostname after conflict.
+Now the global hostname is updated after a conflict occured while trying to claim the hostname.
+
+##### 09 Apr '15 22h -  Vector-like data structures.
+Updated the entire DNS common code and mDNS module last week to support vector-like data structures instead of linked lists, was a bit of work. This again for memory safety reasons. Should maybe run my code in a profiler like valgrind to check for memory leaks and the like. Tommorrow I'll be writing Unit tests.
