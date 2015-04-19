@@ -187,3 +187,9 @@ Now the global hostname is updated after a conflict occured while trying to clai
 
 ##### 09 Apr '15 22h -  Vector-like data structures.
 Updated the entire DNS common code and mDNS module last week to support vector-like data structures instead of linked lists, was a bit of work. This again for memory safety reasons. Should maybe run my code in a profiler like valgrind to check for memory leaks and the like. Tommorrow I'll be writing Unit tests.
+
+##### 10 Apr '15 16h -  Fixed wrong cookie-compare function.
+Comparing cookies went wrong because cookies don't work with linked-lists anymore. Fixed this.
+
+##### 19 Apr '15 12h -  Finished Unit tests for DNS common code.
+Written 46 Unit tests for the DNS common code. Will be starting tonight with the mDNS unit tests.
