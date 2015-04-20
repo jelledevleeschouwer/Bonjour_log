@@ -193,3 +193,33 @@ Comparing cookies went wrong because cookies don't work with linked-lists anymor
 
 ##### 19 Apr '15 12h -  Finished Unit tests for DNS common code.
 Written 46 Unit tests for the DNS common code. Will be starting tonight with the mDNS unit tests.
+
+##### 20 Apr '15 11h -  Updated Timer system of cache records.
+As a result of some feedback by Daniele Lacamare on my code I've updated the TTL timing of cache records to use a single function where all the records in the cache are updated and checked simultaneously. This results in a bit of error, but it isn't that critical, so it doesn't really mind.
+
+##### 20 Apr '15 11h -  Updated Timer system of cookie timeout.
+Like with the TTL of the cache records I've updated the timeout of query-cookies to use the same function as the cache records to check if they are expired or not.
+
+##### 20 Apr '15 15h -  Fixed some errors with deleting records from Cache tree.
+There where some errors when deleting some expired records from the cache-tree, resulting in an endless loop in a pico_tree_foreach. This probably because the when the record is deleted, the pico_tree_next couldn't find the next node. Fixed this by moving to the next node before deleting the current node.
+
+##### 20 Apr '15 15h -  Added Shared over Unique priority.
+Implemented the conflict resolution mechanism to resolve conflicts when somebody else announces a shared record with the same name and type as a record which you previously claimed as unique. The RFC prescribes a method for which Shared records have priority over Unique records, so you (because you claimed the unique record first) should apply the conflict resolution mechanism.
+
+##### 20 Apr '15 15h -  Finished mDNS module.
+Today, I finished the mDNS module entirely. Entirely is of course a big word, since there is always room for improvement. But, I finished all functionalities I wanted to implement and the code seems robust enough to move on to DNS-SD. 
+
+Functionalities I implemented:
+
+* Claiming of multiple unique records
+* Claiming of multiple shared records
+* Claiming of the 2 above in a single API-function call
+* Defending of unique records
+* Conflict resolution mechanism
+* Simultaneous Probe Tiebreaking
+* Known Answer Suppression
+* Caching of records
+* Continuous querying
+* DNS name compression and decompression
+* Duplicate query suppression
+* Priority of shared records over unique records
