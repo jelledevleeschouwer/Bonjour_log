@@ -207,7 +207,7 @@ There where some errors when deleting some expired records from the cache-tree, 
 Implemented the conflict resolution mechanism to resolve conflicts when somebody else announces a shared record with the same name and type as a record which you previously claimed as unique. The RFC prescribes a method for which Shared records have priority over Unique records, so you (because you claimed the unique record first) should apply the conflict resolution mechanism.
 
 ##### 20 Apr '15 15h -  Finished mDNS module.
-Today, I finished the mDNS module entirely. Entirely is of course a big word, since there is always room for improvement. But, I finished all functionalities I wanted to implement and the code seems robust enough to move on to DNS-SD. 
+Today, I finished the mDNS module entirely. Entirely is of course a big word, since there is always room for improvement. But, I finished all functionalities I wanted to implement and the code seems robust enough to move on to DNS-SD.
 
 Functionalities I implemented:
 
@@ -223,3 +223,8 @@ Functionalities I implemented:
 * DNS name compression and decompression
 * Duplicate query suppression
 * Priority of shared records over unique records
+
+##### 21 Apr '15 12h -  Fixed bug with 2 claims directly after each other.
+When 'pico_mdns_claim' is called 2 times right after each other with 2 different records, there was a bug that the record from the first claim was probed again the second time, which we don't want. Fixed.
+
+##### 21 Apr '15 22h -  Written 35 of 72 Unit tests for the mDNS module
