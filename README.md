@@ -229,12 +229,11 @@ When 'pico_mdns_claim' is called 2 times right after each other with 2 different
 
 ##### 21 Apr '15 22h -  Written 35 of 72 Unit tests for the mDNS module
 
-##### 22 Apr '15 11h -  Deleting multiple tree nodes at once.
-PICO_TREE
+##### 22 Apr '15 11h -  Deleting multiple tree nodes at once - PICO_TREE.
 When you want to delete multiple records at once in a pico_tree memory structure, you immediatelly think of iterating over the tree with a foreach and deleting the nodes you want to be deleted. However, this doesn't work like that, since when you call 'pico_tree_delete(tree, key);', the node-pointer you provided in the foreach will be pointing to a location in memory which is freed. When you then move to the next iteration the pico_tree_next will be dereferencing this pointer, which gives you a segmentation fault.
 
 I originally solved this by doing:
-'''
+```
 pico_tree_foreach(node, tree) {
 	node_record = node->keyValue;
 	pico_tree_next(node);
@@ -242,9 +241,9 @@ pico_tree_foreach(node, tree) {
 	if (pico_mdns_record_delete(&record) < 0)
 		return -1;
 }
-'''
+```
 But if you do this, a node will be skipped in the next iteration because the foreach call pico_tree_next() again. So you don't want this to happen twice so you'll have move back again first before you move to the next iteration:
-'''
+```
 pico_tree_foreach(node, tree) {
 	node_record = node->keyValue;
 	pico_tree_next(node);
@@ -253,6 +252,6 @@ pico_tree_foreach(node, tree) {
 		return -1;
 	pico_tree_prev(node); // Moving back one node
 }
-'''
+```
 
 What you also can do is finding all the records you want to delete first, then iterating over them and deleting them in the tree like that, but I think previous method is more efficient.
