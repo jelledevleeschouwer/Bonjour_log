@@ -238,7 +238,7 @@ pico_tree_foreach(node, tree) {
 	node_record = node->keyValue;
 	pico_tree_next(node);
 	pico_tree_delete(tree, node_record);
-	if (pico_mdns_record_delete(&record) < 0)
+	if (pico_mdns_record_delete(&node_record) < 0)
 		return -1;
 }
 ```
@@ -248,10 +248,16 @@ pico_tree_foreach(node, tree) {
 	node_record = node->keyValue;
 	pico_tree_next(node);
 	pico_tree_delete(tree, node_record);
-	if (pico_mdns_record_delete(&record) < 0)
+	if (pico_mdns_record_delete(&node_record) < 0)
 		return -1;
 	pico_tree_prev(node); // Moving back one node
 }
 ```
 
 What you also can do is finding all the records you want to delete first, then iterating over them and deleting them in the tree like that, but I think previous method is more efficient.
+
+##### 22 Apr '15 16h -  Finished all the unit test for the mDNS module.
+Finished 58 unit tests for the mDNS module, now cleaning them up.
+
+##### 22 Apr '15 17h -  [MILESTONE] - Finished mDNS and Unit tests.
+Reached a milestone today. Finished the mDNS module, 46 unit test for the DNS common code and 58 unit tests for the mDNS module. Tommorrow will discuss with Thomas how the DNS-SD module will look like, and then I can start right away! Yay!
