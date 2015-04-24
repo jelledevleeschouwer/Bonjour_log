@@ -261,3 +261,9 @@ Finished 58 unit tests for the mDNS module, now cleaning them up.
 
 ##### 22 Apr '15 17h -  [MILESTONE] - Finished mDNS and Unit tests.
 Reached a milestone today. Finished the mDNS module, 46 unit test for the DNS common code and 58 unit tests for the mDNS module. Tommorrow will discuss with Thomas how the DNS-SD module will look like, and then I can start right away! Yay!
+
+##### 24 Apr '15 13h -  SLAACv4 after DHCP failure.
+Tried to update a the DHCPv4 demo app to use SLAACv4 when the DHCPv4 negotiation fails. But, I noticed the DHCP implementation keeps sending DHCPDISCOVER messages without returning. Wouldn't it be nice if the DHCP client 'fails' when 3 DHCPDISCOVER messages are sent without any response? In this way, the application who uses DHCP can use SLAACv4 to assign a Link-Local address to itself. Now, this isn't a possibility.
+
+##### 24 Apr '15 14h -  Added required rdata length to create DNS record.
+Changed record create function so that the length of rdata needs to be given when creating a record. Previously the length of rdata was determined based on the DNS type but that only worked for A, AAAA and PTR records. Now that I need to support TXT and SRV records, that works no longer.
