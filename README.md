@@ -267,3 +267,18 @@ Tried to update a the DHCPv4 demo app to use SLAACv4 when the DHCPv4 negotiation
 
 ##### 24 Apr '15 14h -  Added required rdata length to create DNS record.
 Changed record create function so that the length of rdata needs to be given when creating a record. Previously the length of rdata was determined based on the DNS type but that only worked for A, AAAA and PTR records. Now that I need to support TXT and SRV records, that works no longer.
+
+##### 27 Apr '15 16h -  Created skeleton for the DNS-SD module.
+Today, I started working on the DNS-SD module. Created a skeleton in the header file, added some makefile rules, created a DNS SD demo app for testing purposes.
+
+##### 27 Apr '15 16h -  Added support for SRV records.
+Now SRV records can be created easily in the DNS-SD module. 'Shouldn't you move that to the DNS common code?' Well, I think not. Because, the purpose of the DNS common code is to provide the bare functionalities to create DNS resource records and DNS questions. It should be up to the module or application using the DNS common code to provide right formatted rdata when creating those records as is the case with SRV records. In my opinion, the DNS common code already provides even too much functionalities. Like converting the URL given in rdata to DNS name format when PTR records are created. In my opinion this should be up to the application or other module as well. But for now, it doesn't do any harm.
+
+##### 28 Apr '15 00h -  Whoops, already have a working DNS-SD module.
+Haha, wow, think I overestimated DNS-SD a bit. I already finished a working DNS-SD demo in bit over 4 hours. It can register a service with SRV record and a TXT record but no browsing for now.
+
+##### 28 Apr '15 00h -  Added TXT records.
+Now, TXT records can be created in the DNS-SD module with a key-value pair vector. Seperate key-value pairs can be added to the vector. When the value is a NULL-ptr the '='-symbol will not be added in the txt and the key will be interpreted as a boolean. Otherwise the value can be empty or with a value.
+
+##### 28 Apr '15 00h -  Had a bug with compression of multiple records.
+Still had a bug in the DNS common code. Which means my unit tests for that code, didn't eliminate the bug, what means I was sloppy.. Debugged a long time on this one. There was someting wrong with memcpy(), which was really really weird. If i gave a number of bytes to copy, like: ```memcpy(dest, src, 40);``` ìt didn't copy all the number of bytes given, but if I did: ```memcpy(dest, src, 40 + 1);``` It copied 1 more (!) than originally but still not all of them. I thought this was really weird, and I have no idea what the problem is here. So I implemented my own way of moving data...
