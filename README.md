@@ -282,3 +282,6 @@ Now, TXT records can be created in the DNS-SD module with a key-value pair vecto
 
 ##### 28 Apr '15 00h -  Had a bug with compression of multiple records.
 Still had a bug in the DNS common code. Which means my unit tests for that code, didn't eliminate the bug, what means I was sloppy.. Debugged a long time on this one. There was someting wrong with memcpy(), which was really really weird. If i gave a number of bytes to copy, like: ```memcpy(dest, src, 40);``` ìt didn't copy all the number of bytes given, but if I did: ```memcpy(dest, src, 40 + 1);``` It copied 1 more (!) than originally but still not all of them. I thought this was really weird, and I have no idea what the problem is here. So I implemented my own way of moving data...
+
+##### 28 Apr '15 15h -  Poked around with OpenOCD and Eclipse.
+Since I already finished registering services almost entirely (except for a callback and probe questions removal), I wanted to test this on the Hitex Evaluation Board. So spend some time with the connected-device repository, OpenOCD and eclipse to build projects for the platform. Couldn't program the flash yet since I didn't have an adapter to connect the j-link dongle I got from school to the board. Tommorrow will have an adapter so I can play around tommorrow. Will write a bit on my thesis in the meanwhile.
