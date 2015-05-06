@@ -285,3 +285,32 @@ Still had a bug in the DNS common code. Which means my unit tests for that code,
 
 ##### 28 Apr '15 15h -  Poked around with OpenOCD and Eclipse.
 Since I already finished registering services almost entirely (except for a callback and probe questions removal), I wanted to test this on the Hitex Evaluation Board. So spend some time with the connected-device repository, OpenOCD and eclipse to build projects for the platform. Couldn't program the flash yet since I didn't have an adapter to connect the j-link dongle I got from school to the board. Tommorrow will have an adapter so I can play around tommorrow. Will write a bit on my thesis in the meanwhile.
+
+##### 05 May '15 11h -  Finally a working development environment.
+Got an solid working environment with eclipse CDT and SEGGER J-Link debuggin plugin. Took a while.
+
+##### 06 May '15 14h -  demo-webserver with Zeroconf.
+Updated the demo-webserver application to make use of zeroconf technology. The service of the HTTP service is correctly registered on the network as you can see in the image below. ![alt tag](https://raw.githubusercontent.com/jelledevleeschouwer/log/master/dns_sd_demo_1.png)
+
+##### 06 May '15 15h -  HardFault on PICO_FREE.
+Think I've got a memory issue with the demo application. Everytime I debug the application, on a sudden moment a HardFault will be triggered. This mostly occurs in the pico_dns_qname_to_url function. The first thing that I notice is that the string passed in the function is wrong, this in the trend:
+
+```
+"\x9_kerberos\xBKingRichard\x5local!"
+				    ^ /* This exclamation mark isn't supposed to be here */
+```
+
+So I debugged this, and checked the string that is being passed into this function. What is remarkable is that the string being passed in the function _is_ correctly formatted. So:
+
+```
+"\x9_kerberos\xBKingRichard\x5local"
+```
+
+So I don't think anything is wrong here. But still, the string happens to be changed somewhere. So I updated the function pico_dns_qname_to_url to make use of a predefined string of 256 bytes. I don't really like this method but it works and it happens to be good for memory safety.
+
+You'd think the issue would be solved here. But nothing could be more further from the truth. If I rerun the program several times. The HardFault just happens to be triggered somewhere else. If it's not in the pico_frame_discard()-function then it is in some other function.
+
+I can't really figure out where the problem lies. It's really difficult to debug since it always happens to occur somewhere else. The only cause I can vaguely think of is that the program write somewhere where I'm not supposed to write to, that memory is being corrupted somewhere but figuring this out seems a bit out of my capacity.
+
+##### 06 May '15 15h -  HardFault on STD-functions.
+It appears that the HardFault isn't only triggered at the free()-function but also at other STD-functions, like strlen(), zalloc(), etc.But if there is one thing the internet and C programming learned me, is that the STD-functions most likely are not wrong. Bummer.
