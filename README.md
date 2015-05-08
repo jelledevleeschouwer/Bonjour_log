@@ -314,3 +314,12 @@ I can't really figure out where the problem lies. It's really difficult to debug
 
 ##### 06 May '15 15h -  HardFault on STD-functions.
 It appears that the HardFault isn't only triggered at the free()-function but also at other STD-functions, like strlen(), zalloc(), etc.But if there is one thing the internet and C programming learned me, is that the STD-functions most likely are not wrong. Bummer.
+
+##### 08 May '15 11h -  Back to DNS-SD.
+Okay, I'm gonna let the demo be what it is for now. I'll fix it later. Now I should focus on DNS SD again and writing unit tests. First did a fix of generating probe questions. The names where converted to lowercase which caused incorrect conflict detection.
+
+##### 08 May '15 13h -  Fixed updating of shared PTR record after conflict.
+Fixed some bugs in the code which resulted in the shared PTR record not being updated after a conflict occurs. Now the DNS SD module succesfully resolves conflicts.
+
+##### 08 May '15 14h -  Made continuous refreshing configurable.
+Made the possibility in mDNS to continuously update the cache entries configurable since this asks some unnessecary performance. It's actually only needed on the browsing-side.
