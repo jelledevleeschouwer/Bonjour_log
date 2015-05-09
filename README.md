@@ -323,3 +323,6 @@ Fixed some bugs in the code which resulted in the shared PTR record not being up
 
 ##### 08 May '15 14h -  Made continuous refreshing configurable.
 Made the possibility in mDNS to continuously update the cache entries configurable since this asks some unnessecary performance. It's actually only needed on the browsing-side.
+
+##### 09 May '15 20h -  Written Unit tests for DNS-SD.
+Finished writing 17 unit tests for DNS-SD, refactored the code a bit.
