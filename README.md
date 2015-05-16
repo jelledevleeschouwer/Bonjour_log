@@ -326,3 +326,6 @@ Made the possibility in mDNS to continuously update the cache entries configurab
 
 ##### 09 May '15 20h -  Written Unit tests for DNS-SD.
 Finished writing 17 unit tests for DNS-SD, refactored the code a bit.
+
+##### 14 May '15 17h -  Pull request.
+After fixing some reasonable TICS violations, I did a pull request with the development branch. I'm really curious. Now I can focus on my thesis the entire weekend.
